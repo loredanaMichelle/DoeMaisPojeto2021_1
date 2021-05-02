@@ -12,5 +12,7 @@ export class AppComponent {
     this.usuarios = [...this.usuarios,usuario];
     console.log(usuario);
     }
+
+  
 }
 

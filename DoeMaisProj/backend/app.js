@@ -4,6 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Usuario = require('./models/usuario');
+const Campanha = require('./models/campanha')
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -23,6 +25,19 @@ const usuarios = [
         endereco: 'rua jaragua',
         celular: '154896857',
         tipoSanguineo: 'A+'
+    }
+]
+
+const campanhas = [
+    {
+        id: '1',
+        cnpjInsti: '79.995.424/0001-93',
+        titulo: 'O coração precisa de você',
+        tipoSang: 'A+',
+        dataIni: '16/04/2021',
+        dataFim: '30/04/2021',
+        horaIni: '08h00',
+        horaFim: '16h00'
     }
 ]
 
@@ -63,5 +78,16 @@ app.use('/api/registo', (req, res, next) => {
         usuarios: usuarios
     })
 });
+
+app.get('/api/campanhas', (req, res, next) =>{
+    Campanha.find().then(documents => {
+        console.log (documents)
+        res.status(200).json({
+            mensagem: "Tudo OK",
+            campanhas: documents
+        });
+    })
+});
+
 
 module.exports = app;

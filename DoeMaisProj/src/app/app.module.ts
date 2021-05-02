@@ -6,7 +6,6 @@ import { HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { UsuarioRegistraComponent } from './usuarios/usuario-registra/usuario-registra.component';
-import { CampanhaCardsComponent } from './campanhas/campanha-cards/campanha-cards.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +20,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UsuarioService } from './usuarios/usuario.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { CampanhaListaComponent } from './campanhas/campanha-lista/campanha-lista.component';
+import { CampanhaService } from './campanhas/campanha.service';
 
 
 @NgModule({
@@ -28,8 +29,8 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
     AppComponent,
     UsuarioRegistraComponent,
     CabecalhoComponent,
-    CampanhaCardsComponent,
     DialogExampleComponent,
+    CampanhaListaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
     AppRoutingModule,
     MatDialogModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, CampanhaService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
