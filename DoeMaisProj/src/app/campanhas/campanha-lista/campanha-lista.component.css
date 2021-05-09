@@ -1,0 +1,41 @@
+
+.cardCamp{
+    width: 100%;
+}
+
+mat-card{
+    border-width: 3px;
+    border-color: #851010;
+    border-style:double;
+    margin-bottom: 5px;
+    margin-top: 3px;
+}
+
+mat-card-header{
+    text-align: center;
+    justify-content: center;
+}
+
+mat-card-content{
+    margin-left: 10px;
+    margin-bottom: 7px;
+}
+
+mat-card-actions{
+margin-left: 10px;
+}
+
+button{
+    background-color:#610B0B;
+  color: white;
+}
+
+
+    mat-toolbar{
+        background-color: #851010;
+        /* color: #610b0b; */
+        color: white;
+        justify-content: center;
+        height: 50%;
+        font-size: 17px;
+      }

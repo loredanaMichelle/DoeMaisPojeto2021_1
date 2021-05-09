@@ -5,6 +5,7 @@ export interface Campanha {
     dataIni: String,
     dataFim: String,
     horaIni: String,
-    horaFim: String
+    horaFim: String,
+    local: String
 
 }

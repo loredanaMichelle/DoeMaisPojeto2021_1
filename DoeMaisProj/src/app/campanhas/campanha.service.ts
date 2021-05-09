@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root'})
 export class CampanhaService {
   private campanhas: Campanha[] = [];
+  private listaCampanhasAtualizada = new Subject<Campanha[]>();
   //campanhas: any;
 
   constructor(private httpClient: HttpClient){
@@ -16,7 +17,7 @@ export class CampanhaService {
   getCampanhas(): void {
       this.httpClient.get <{mensagem: string, campanhas: any}>('http://localhost:3000/api/campanhas')
         .pipe(map((dados) => {
-          return dados.campanhas.map(campanha => {
+          return dados.campanhas.map((campanha: any) => {
             return {
               id: campanha._id,
               cnpjInsti: campanha.cnpjInsti,
@@ -25,15 +26,21 @@ export class CampanhaService {
               dataIni: campanha.dataIni,
               dataFim: campanha.dataFim,
               horaIni: campanha.horaIni,
-              horaFim: campanha.horaFim
+              horaFim: campanha.horaFim,
+              local: campanha.local
             }
           })
         }))
         .subscribe(
             (campanhas) => {
               this.campanhas = campanhas;
+              this.listaCampanhasAtualizada.next([...this.campanhas])
             }
           )
+  }
+
+  getListaDeCampanhasAtualizadaObservable(){
+    return this.listaCampanhasAtualizada.asObservable();
   }
 
   //getCampanhas(): void {

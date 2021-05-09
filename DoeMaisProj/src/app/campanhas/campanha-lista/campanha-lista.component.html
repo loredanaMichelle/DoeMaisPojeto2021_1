@@ -1,16 +1,18 @@
-<mat-card >
-    <mat-card-header>
-      <mat-card-title>titulo</mat-card-title>
-      <mat-card-subtitle>descrição</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg">
-    <mat-card-content>
-      <p>
-        texto sobre a campanha e instruções
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>realizar agendamento</button>
-    </mat-card-actions>
-  </mat-card>
-  
+<mat-toolbar>Campanhas</mat-toolbar>
+<mat-card class="cardcamp" *ngFor="let campanha of campanhas">
+  <mat-card-header> 
+    <mat-card-title>{{campanha.titulo}}</mat-card-title>
+    <mat-card-subtitle>
+      <p>De {{campanha.dataIni}} até {{campanha.dataFim}}</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+<!-- <img mat-card-image src="h  ttps://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg"> -->
+<mat-card-content>
+    <p>Tipo de sangue requerido: {{campanha.tipoSang}}</p>
+    <p>Local: {{campanha.local}}</p>
+    <p>Horario: {{campanha.horaIni}} ate {{campanha.horaFim}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>realizar agendamento</button>
+  </mat-card-actions>
+</mat-card> 

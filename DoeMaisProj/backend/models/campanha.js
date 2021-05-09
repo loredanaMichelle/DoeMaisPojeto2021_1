@@ -7,7 +7,8 @@ tipoSang: {type: String},
 dataIni: {type: String},
 dataFim: {type: String},
 horaIni: {type: String},
-horaFim: {type: String}
+horaFim: {type: String},
+local: {type: String}
 
 });
 

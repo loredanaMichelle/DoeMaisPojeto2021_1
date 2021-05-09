@@ -37,7 +37,8 @@ const campanhas = [
         dataIni: '16/04/2021',
         dataFim: '30/04/2021',
         horaIni: '08h00',
-        horaFim: '16h00'
+        horaFim: '16h00',
+        local: 'R. Des. Eliseu Guilherme, 147 - Paraíso, São Paulo - SP, 04004-030'
     }
 ]
 
