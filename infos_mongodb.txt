@@ -45,12 +45,12 @@
 
 - usuarios:
 	{
-	     id: '1',
-       	     nome: 'Jose',
-	     cpf: '12589466857',
-	     idade: '19',
-       	     endereco: 'rua jaragua, 37',
-       	     celular: '154896857',
-	     tipoSanguineo: 'A+'
+	     "id": '1',
+       	     "nome": 'Jose',
+	     "cpf": '12589466857',
+	     "idade": '19',
+       	     "endereco": 'rua jaragua, 37',
+       	     "celular": '154896857',
+	     "tipoSanguineo": 'A+'
 	}
 	
