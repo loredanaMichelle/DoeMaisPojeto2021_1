@@ -9,7 +9,7 @@ const Campanha = require('./models/campanha')
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://api-access:NrghIln6w4R8Na40@doemais-db.kxdnu.mongodb.net/db_doemais?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://api-access:doemaisdbpassword123@doemais-db.kxdnu.mongodb.net/db_doemais?retryWrites=true&w=majority')
     .then(() => {
         console.log("Conexão OK")
     }).catch(() => {
