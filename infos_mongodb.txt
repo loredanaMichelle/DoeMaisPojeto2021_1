@@ -53,4 +53,3 @@
        	     "celular": '154896857',
 	     "tipoSanguineo": 'A+'
 	}
-	
