@@ -1,0 +1,56 @@
+*String de acesso do banco: 
+'mongodb+srv://api-access:doemaisdbpassword123@doemais-db.kxdnu.mongodb.net/db_doemais?retryWrites=true&w=majority'
+
+
+*Nome do banco:  db_doemais
+
+
+*Nome das tabelas:
+	- agendamento
+	- autenticacao
+	- campanhas
+	- instituicao
+	- usuarios
+
+
+*Exemplo do conteúdo de tabelas:
+
+- agendamento:
+	{ }
+
+
+- autenticacao:
+	{
+    	     "login": "silvaph@gmail.com",
+   	     "senha": "123dasilva4",
+	}
+
+
+- campanhas:
+	{
+    	     "cnpjInsti": "79.995.424/0001-93",
+    	     "titulo": "O coração precisa de você",
+    	     "tipoSang": "A+",
+    	     "dataIni": "16/04/2021",
+    	     "dataFim": "30/04/2021",
+    	     "horaIni": "08h00",
+    	     "horaFim": "16h00",
+    	     "local": "R. Des. Eliseu Guilherme, 147 - Paraíso, São Paulo - SP, 04004-030"
+	}
+
+
+- instituicao:
+	{ }
+
+
+- usuarios:
+	{
+	     id: '1',
+       	     nome: 'Jose',
+        	     cpf: '12589466857',
+        	     idade: '19',
+       	     endereco: 'rua jaragua, 37',
+       	     celular: '154896857',
+        	     tipoSanguineo: 'A+'
+	}
+	
