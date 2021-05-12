@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { UsuarioService } from './usuarios/usuario.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +48,8 @@ import { CampanhaService } from './campanhas/campanha.service';
     AppRoutingModule,
     MatDialogModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule
   ],
   providers: [UsuarioService, CampanhaService], 
   bootstrap: [AppComponent]

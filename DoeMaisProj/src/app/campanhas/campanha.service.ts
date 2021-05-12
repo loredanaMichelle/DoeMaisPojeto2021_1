@@ -43,6 +43,15 @@ export class CampanhaService {
     return this.listaCampanhasAtualizada.asObservable();
   }
 
+  getTipoSang(tipoSang: string): void {
+    this.httpClient.get('http://localhost:3000/api/campanhas/${tipoSang}').subscribe(() =>{
+      this.campanhas = this.campanhas.filter((cli) => {
+        return cli.tipoSang == tipoSang
+      });
+      this.listaCampanhasAtualizada.next([...this.campanhas]);
+    })
+}
+
   //getCampanhas(): void {
     //  let resp = this.httpClient.get('http://localhost:3000/api/campanhas')
       //resp.subscribe((data)=>this.campanhas=data);

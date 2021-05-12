@@ -9,7 +9,7 @@ const Campanha = require('./models/campanha')
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://doemais1:doemais123@cluster0.xo06r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://api-access:doemaisdbpassword123@doemais-db.kxdnu.mongodb.net/db_doemais?retryWrites=true&w=majority')
     .then(() => {
         console.log("Conexão OK")
     }).catch(() => {
@@ -73,6 +73,7 @@ app.get('/api/usuarios', (req, res, next) => {
     })
 });
 
+
 app.use('/api/registo', (req, res, next) => {
     res.status(200).json({
         mensagem: "tudo OK",
@@ -89,6 +90,17 @@ app.get('/api/campanhas', (req, res, next) =>{
         });
     })
 });
+
+app.get('/api/campanhas/:tipoSang', (req, res, next) =>{
+    Campanha.find({tipoSang:req.params.tipoSang}).then(documents => {
+        console.log (documents)
+        res.status(200).json({
+            mensagem: "Tudo OK",
+            campanhas: documents
+        });
+    })
+});
+
 
 
 module.exports = app;
