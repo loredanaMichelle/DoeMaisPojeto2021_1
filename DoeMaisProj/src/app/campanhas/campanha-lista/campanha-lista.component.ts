@@ -14,6 +14,7 @@ export class CampanhaListaComponent implements OnInit{
 
   campanhas:Campanha[] = [];
   //teste filtro
+  
   myControl = new FormControl();
   options: string[] = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+' , 'O-', 'Todos'];
   //private campanhasSubscription!: Subscription;
