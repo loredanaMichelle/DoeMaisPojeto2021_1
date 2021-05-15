@@ -8,10 +8,8 @@ import { map } from 'rxjs/operators';
 export class CampanhaService {
   private campanhas: Campanha[] = [];
   private listaCampanhasAtualizada = new Subject<Campanha[]>();
-  //campanhas: any;
 
   constructor(private httpClient: HttpClient){
-
   }
 
   getCampanhas(): void {
@@ -51,11 +49,12 @@ export class CampanhaService {
       this.listaCampanhasAtualizada.next([...this.campanhas]);
     })
 }
-
+//teste get campanhas
   //getCampanhas(): void {
     //  let resp = this.httpClient.get('http://localhost:3000/api/campanhas')
       //resp.subscribe((data)=>this.campanhas=data);
   //}
+
 
  
 }

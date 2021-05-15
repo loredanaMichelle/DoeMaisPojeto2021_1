@@ -1,21 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <mat-toolbar>Campanhas</mat-toolbar>
 <!-- <mat-form-field>
   <input (keyup)= "applyFilter($event.target.value)" matInput placeholder="Filter">
 </mat-form-field> -->
-
-<div class="filtro">
-<mat-form-field>
-  <mat-label>Filtro</mat-label>
-  <input (keyup)="applyFilter($event.target.value)" matInput type="text" placeholder="Selecione um tipo sanguineo" 
-    matInput [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let option of options" [value]="option">
-      {{option}}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
-<button class= "bot" mat-raised-button onclick="window.location.reload()">Limpar filtro</button>
+<div class="descricao">
+<mat-card-subtitle>Veja as campanhas ativas em São Paulo - SP</mat-card-subtitle>
 </div>
+<div class="filtro">
+  <mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input (keyup)="applyFilter($event.target.value)" matInput type="text" placeholder="Selecione um tipo sanguineo"
+      matInput [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button class="bot" mat-raised-button onclick="window.location.reload()">Limpar filtro</button>
+</div>
+
+<div class="telaCamp">
 <mat-card class="cardcamp" *ngFor="let campanha of campanhas ">
   <mat-card-header>
     <mat-card-title>{{campanha.titulo}}</mat-card-title>
@@ -33,3 +39,16 @@
     <button mat-button>realizar agendamento</button>
   </mat-card-actions>
 </mat-card>
+</div>
+
+<div class="descricaoFim">
+  <mat-card-subtitle>Lista atualizada diariamente.</mat-card-subtitle>
+  </div>
+
+<nav class="navbar fixed-bottom">
+  <div class="navbar" >
+    <a href=""><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    <a class="active" href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
+    <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
+  </div>
+</nav>

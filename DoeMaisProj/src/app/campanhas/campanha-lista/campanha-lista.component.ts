@@ -4,6 +4,7 @@ import { CampanhaService} from '../campanha.service'
 import { Subscription } from 'rxjs';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-campanha-lista',
@@ -13,20 +14,15 @@ import {FormControl} from '@angular/forms';
 export class CampanhaListaComponent implements OnInit{
 
   campanhas:Campanha[] = [];
-  //teste filtro
-  
+  //filtro
   myControl = new FormControl();
   options: string[] = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+' , 'O-', 'Todos'];
+  //teste filtro
   //private campanhasSubscription!: Subscription;
   //displayedColumns: string[]=['tipoSang'];
   dataSource = new MatTableDataSource(this.campanhas);
   constructor(public campanhaService: CampanhaService) { }
 
-
-  /* ngOnInit(): void {
-    this.campanhaService.getCampanhas();
-  } */
- 
 
   ngOnInit(): void {
     this.campanhaService.getCampanhas();
@@ -36,6 +32,7 @@ export class CampanhaListaComponent implements OnInit{
       });
   }
 
+  //teste filtro
   /* applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
   } */

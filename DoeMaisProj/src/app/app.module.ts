@@ -19,6 +19,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { UsuarioService } from './usuarios/usuario.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +51,9 @@ import { CampanhaService } from './campanhas/campanha.service';
     MatDialogModule,
     MatExpansionModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatPaginatorModule,
+    MatTabsModule
   ],
   providers: [UsuarioService, CampanhaService], 
   bootstrap: [AppComponent]

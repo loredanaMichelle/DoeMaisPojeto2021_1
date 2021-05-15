@@ -48,7 +48,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
     next();
 });
-
+// post registros de usuarios
 app.post('/api/registro', (req, res, next) => {
     const usuario = new Usuario({
         nome: req.body.nome,
@@ -62,45 +62,43 @@ app.post('/api/registro', (req, res, next) => {
     console.log(usuario);
     res.status(201).json({ mensagem: 'Usuario registrado' })
 })
-
+//get lista de regitros de usuarios
 app.get('/api/usuarios', (req, res, next) => {
     Usuario.find().then(documents => {
-        console.log (documents)
+        console.log(documents)
         res.status(200).json({
             mensagem: "Tudo OK",
             usuarios: documents
         });
     })
 });
-
-
+//use lista de registros de usuarios
 app.use('/api/registo', (req, res, next) => {
     res.status(200).json({
         mensagem: "tudo OK",
         usuarios: usuarios
     })
 });
-
-app.get('/api/campanhas', (req, res, next) =>{
+//get de lista de campanhas
+app.get('/api/campanhas', (req, res, next) => {
     Campanha.find().then(documents => {
-        console.log (documents)
+        console.log(documents)
         res.status(200).json({
             mensagem: "Tudo OK",
             campanhas: documents
         });
     })
 });
-
-app.get('/api/campanhas/:tipoSang', (req, res, next) =>{
-    Campanha.find({tipoSang:req.params.tipoSang}).then(documents => {
-        console.log (documents)
+//get de filtro
+app.get('/api/campanhas/:tipoSang', (req, res, next) => {
+    Campanha.find({ tipoSang: req.params.tipoSang }).then(documents => {
+        console.log(documents)
         res.status(200).json({
             mensagem: "Tudo OK",
             campanhas: documents
         });
     })
 });
-
 
 
 module.exports = app;

@@ -1,5 +1,4 @@
-<mat-card>
-    <form (submit)="onRegistrarUsuario(usuarioForm)" #usuarioForm="ngForm">
+<form class="tela"(submit)="onRegistrarUsuario(usuarioForm)" #usuarioForm="ngForm">
         <mat-card-subtitle>Faça um breve cadastro, para ficar por dentro das campanhas de doações.</mat-card-subtitle>
         <mat-form-field>
             <input required minlength="4" type="text" matInput placeholder="Nome" name="nome" ngModel #nome="ngModel" />
@@ -41,4 +40,3 @@
         <button mat-raised-button (click)="openDialog()">Registrar dados</button>
 <!--         <button mat-raised-button [routerLink]="['/campanhas, ngForm']">Registrar dados</button> -->
     </form>
-</mat-card>
