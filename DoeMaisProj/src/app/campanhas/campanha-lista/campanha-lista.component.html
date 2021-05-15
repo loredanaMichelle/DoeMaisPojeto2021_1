@@ -1,14 +1,21 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <mat-toolbar>Campanhas</mat-toolbar>
 <!-- <mat-form-field>
   <input (keyup)= "applyFilter($event.target.value)" matInput placeholder="Filter">
 </mat-form-field> -->
 <div class="descricao">
-<mat-card-subtitle>Veja as campanhas ativas em São Paulo - SP</mat-card-subtitle>
+  <mat-card-subtitle>Veja as campanhas ativas em São Paulo - SP</mat-card-subtitle>
 </div>
+<div class="instrucao">
+  <p>1° Escolha seu Tipo sanguíneo</p>
+  <p>2° Aperte a tecla ENTER</p>
+  <p>3° Após fazer seu procedimento, aperte o LIMPAR, em caso de nova pesquisa</p>
+</div>
+
 <div class="filtro">
   <mat-form-field>
+
     <mat-label>Filtro</mat-label>
     <input (keyup)="applyFilter($event.target.value)" matInput type="text" placeholder="Selecione um tipo sanguineo"
       matInput [matAutocomplete]="auto">
@@ -22,33 +29,34 @@
 </div>
 
 <div class="telaCamp">
-<mat-card class="cardcamp" *ngFor="let campanha of campanhas ">
-  <mat-card-header>
-    <mat-card-title>{{campanha.titulo}}</mat-card-title>
-    <mat-card-subtitle>
-      <p>De {{campanha.dataIni}} até {{campanha.dataFim}}</p>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <!-- <img mat-card-image src="h  ttps://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg"> -->
-  <mat-card-content>
-    <p>Tipo de sangue requerido: {{campanha.tipoSang}} </p>
-    <p>Local: {{campanha.local}}</p>
-    <p>Horario: {{campanha.horaIni}} ate {{campanha.horaFim}}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>realizar agendamento</button>
-  </mat-card-actions>
-</mat-card>
+  <mat-card class="cardcamp" *ngFor="let campanha of campanhas ">
+    <mat-card-header>
+      <mat-card-title>{{campanha.titulo}}</mat-card-title>
+      <mat-card-subtitle>
+        <p>De {{campanha.dataIni}} até {{campanha.dataFim}}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="h  ttps://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg"> -->
+    <mat-card-content>
+      <p>Tipo de sangue requerido: {{campanha.tipoSang}} </p>
+      <p>Local: {{campanha.local}}</p>
+      <p>Horario: {{campanha.horaIni}} ate {{campanha.horaFim}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>realizar agendamento</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
 <div class="descricaoFim">
   <mat-card-subtitle>Lista atualizada diariamente.</mat-card-subtitle>
-  </div>
+</div>
 
 <nav class="navbar fixed-bottom">
-  <div class="navbar" >
+  <div class="navbar">
     <a href=""><i class="fa fa-address-card" aria-hidden="true"></i></a>
     <a class="active" href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
     <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
   </div>
 </nav>
+<script src="./enter.js"></script>
