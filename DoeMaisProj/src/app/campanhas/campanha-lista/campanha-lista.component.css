@@ -9,12 +9,13 @@
 }
 
 .bot{
-margin-left: 50px;
+margin-left: 41px;
 display: inline-block;
 }
 
 .telaCamp{
     padding-bottom: 50px;
+    margin: 10px;
 }
 
 .descricao{
@@ -22,13 +23,20 @@ display: inline-block;
     display:inline-flexbox;
     height: 30px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .descricaoFim{
     padding-bottom: 50px;
     display:inline-flexbox;
-
     text-align: center;
+    
+}
+
+.instrucao p 
+{
+    margin: 2px;
+    margin-left: 10px;
 }
 
 mat-card{
