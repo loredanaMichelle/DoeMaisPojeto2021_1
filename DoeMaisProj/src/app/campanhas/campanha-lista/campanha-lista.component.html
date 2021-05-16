@@ -8,12 +8,13 @@
   <mat-card-subtitle>Veja as campanhas ativas em São Paulo - SP</mat-card-subtitle>
 </div>
 <div class="instrucao">
-  <p>1° Escolha seu Tipo sanguíneo</p>
-  <p>2° Aperte a tecla ENTER</p>
-  <p>3° Após fazer seu procedimento, aperte o LIMPAR, em caso de nova pesquisa</p>
+  <p>1° Escolha seu Tipo sanguíneo.</p>
+  <p>2° Aperte a tecla ENTER.</p>
+  <p>3° Após fazer seu procedimento, aperte o LIMPAR, em caso de nova pesquisa.</p>
 </div>
 <div class="filtro">
   <mat-form-field>
+
     <mat-label>Filtro</mat-label>
     <input (keyup)="applyFilter($event.target.value)" matInput type="text" placeholder="Selecione um tipo sanguineo"
       matInput [matAutocomplete]="auto">
@@ -57,3 +58,4 @@
     <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
   </div>
 </nav>
+<script src="./enter.js"></script>
