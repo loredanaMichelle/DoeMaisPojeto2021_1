@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Campanha } from './campanha.model';
+import { Agendamento } from './campanha.model';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -8,6 +9,9 @@ import { map } from 'rxjs/operators';
 export class CampanhaService {
   private campanhas: Campanha[] = [];
   private listaCampanhasAtualizada = new Subject<Campanha[]>();
+  
+  private agendamentos: Agendamento[] = [];
+  private agendamentoAtualizado = new Subject<Agendamento[]>();
 
   constructor(private httpClient: HttpClient){
   }
@@ -55,7 +59,51 @@ export class CampanhaService {
       //resp.subscribe((data)=>this.campanhas=data);
   //}
 
+//agendamento
+getAgendamentos(): void {
+  this.httpClient.get<{
+      mensagem: string, agendamentos: any
+  }>('http://localhost:3000/api/agendamentos')
+      .pipe(map((dados) => {
+          return dados.agendamentos.map(agendamento => {
+              return {
+              id: agendamento._id,
+              cpfDoador: agendamento.cpfDoador,
+              data: agendamento.data,
+              horario: agendamento.horario,
+              local: agendamento.local
+              }
+              })
+      }))
+      .subscribe(
+          (agendamentos) => {
+              this.agendamentos = agendamentos;
+              this.agendamentoAtualizado.next([...this.agendamentos]);
+          }
+      )
+}
 
+getAgendamentoAtualizadoObservable() {
+  return this.agendamentoAtualizado.asObservable();
+}
+
+adicionarAgendamento(id:string, cpfDoador: string, data: string, horario: string, local: string) {
+  const agendamento: Agendamento = {
+      id: id,
+      cpfDoador: cpfDoador,
+      data: data,
+      horario: horario,
+      local: local
+  };
+  this.httpClient.post<{ mensagem: string }>('http://localhost:3000/api/agendamentos',
+      agendamento).subscribe(
+          (dados) => {
+              console.log(dados.mensagem);
+              this.agendamentos.push(agendamento);
+              this.agendamentoAtualizado.next([...this.agendamentos]);
+          }
+      )
+}
  
 }
 

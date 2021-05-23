@@ -4,7 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Usuario = require('./models/usuario');
-const Campanha = require('./models/campanha')
+const Campanha = require('./models/campanha');
+const Agendamento = require('./models/agendamento')
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -38,6 +39,16 @@ const campanhas = [
         dataFim: '30/04/2021',
         horaIni: '08h00',
         horaFim: '16h00',
+        local: 'R. Des. Eliseu Guilherme, 147 - Paraíso, São Paulo - SP, 04004-030'
+    }
+]
+
+const agendamentos = [
+    {
+        id: '1',
+        cpfDoador: '45623566989',
+        data: '14/08/21',
+        horario: '10:30',
         local: 'R. Des. Eliseu Guilherme, 147 - Paraíso, São Paulo - SP, 04004-030'
     }
 ]
@@ -99,6 +110,46 @@ app.get('/api/campanhas/:tipoSang', (req, res, next) => {
         });
     })
 });
+
+// post agendamentos de usuarios
+app.post('/api/agendamentos', (req, res, next) => {
+    const agendamento = new Agendamento({
+        cpfDoador: req.body.cpfDoador,
+        data: req.body.data,
+        horario: req.body.horario,
+        local: req.body.local,
+    })
+    agendamento.save();
+    console.log(agendamento);
+    res.status(201).json({ mensagem: 'Agendamento finalizado' })
+})
+//get lista de agendamentos de usuarios
+app.get('/api/agendamentos', (req, res, next) => {
+    Agendamento.find().then(documents => {
+        console.log(documents)
+        res.status(200).json({
+            mensagem: "Tudo OK",
+            agendamentos: documents
+        });
+    })
+});
+//use lista de agendamento de usuarios
+app.use('/api/agendamentos', (req, res, next) => {
+    res.status(200).json({
+        mensagem: "tudo OK",
+        agendamentos: agendamentos
+    })
+});
+//delete agendamento
+app.delete('/api/agendamentos/:id', (req, res, next) => {
+    Agendamento.deleteOne({_id: req.params.id}).then(resultado => {
+        if (resultado.n > 0){
+            res.status(200).json({mensagem: "Cliente removido"});
+          } else {
+            res.status(401).json({mensagem: "Remoção não permitida"});
+          }
+    })
+  })
 
 
 module.exports = app;

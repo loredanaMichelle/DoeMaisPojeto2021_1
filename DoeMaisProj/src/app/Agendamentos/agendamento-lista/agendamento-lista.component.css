@@ -1,22 +1,13 @@
+.telaCamp{
+    padding-bottom: 50px;
+    margin: 10px;
+
+}
 
 .cardCamp{
     width: 100%;
 }
 
-.filtro{
-    margin-left: 1rem;
-    margin-top: 10px;
-}
-
-.bot{
-margin-left: 41px;
-display: inline-block;
-}
-
-.telaCamp{
-    padding-bottom: 50px;
-    margin: 10px;
-}
 
 .descricao{
     padding-top: 15px;
@@ -26,23 +17,6 @@ display: inline-block;
     margin-bottom: 15px;
 }
 
-.descricaoFim{
-    padding-bottom: 50px;
-    display:inline-flexbox;
-    text-align: center;
-    
-}
-
-.instrucao p 
-{
-    margin: 2px;
-    margin-left: 10px;
-}
-
-.tela mat-form-field, input{
-    width: 100%;
-    background-color: white;
-  }
 
 mat-card{
     border-width: 3px;
@@ -62,15 +36,6 @@ mat-card-content{
     margin-bottom: 7px;
 }
 
-mat-card-actions{
-margin-left: 10px;
-}
-
-button{
-    background-color:#610B0B;
-  color: white;
-}
-
 
 mat-toolbar{
     background-color: #851010;
@@ -80,14 +45,11 @@ mat-toolbar{
     font-size: 17px;
 }
 
-mat-expansion-panel{
-    border-color: #851010;
-    border-style:dotted;
-    border-width: 2px;
-}
 
-mat-panel-title{
-    font-weight: bold;
+button{
+    margin-top: 5px;
+    background-color:#610B0B;
+    color: white;
 }
 
 .navbar {

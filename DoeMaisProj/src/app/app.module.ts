@@ -20,14 +20,20 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import {DatePipe} from "@angular/common";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { UsuarioService } from './usuarios/usuario.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { CampanhaListaComponent } from './campanhas/campanha-lista/campanha-lista.component';
 import { CampanhaService } from './campanhas/campanha.service';
-
+import { AgendamentoListaComponent } from './Agendamentos/agendamento-lista/agendamento-lista.component';
+import { AgendamentoService } from './Agendamentos/agendamento.service'
 
 @NgModule({
   declarations: [
@@ -35,7 +41,8 @@ import { CampanhaService } from './campanhas/campanha.service';
     UsuarioRegistraComponent,
     CabecalhoComponent,
     DialogExampleComponent,
-    CampanhaListaComponent
+    CampanhaListaComponent,
+    AgendamentoListaComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +60,12 @@ import { CampanhaService } from './campanhas/campanha.service';
     MatListModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MomentDateModule
   ],
-  providers: [UsuarioService, CampanhaService], 
+  providers: [UsuarioService, CampanhaService, AgendamentoService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

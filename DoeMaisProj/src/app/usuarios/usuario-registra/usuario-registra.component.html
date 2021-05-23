@@ -5,19 +5,19 @@
             <mat-error *ngIf="nome.invalid">Digite um nome válido</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input required type="text" matInput placeholder="CPF" name="cpf" ngModel #cpf="ngModel" />
+            <input required minlength="11" type="number" matInput placeholder="CPF" name="cpf" ngModel #cpf="ngModel" />
             <mat-error *ngIf="cpf.invalid">Digite um CPF válido</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input required type="text" matInput placeholder="Idade" name="idade" ngModel #idade="ngModel" />
+            <input required maxlength="2" type="number" matInput placeholder="Idade" name="idade" ngModel #idade="ngModel" />
             <mat-error *ngIf="idade.invalid">Digite sua idade</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Endereço" name="endereco" ngModel #endereco="ngModel" />
+            <input type="text" matInput placeholder="Endereço" name="endereco" ngModel #endereco="ngModel" />
             <!-- <mat-error *ngIf="endereco.invalid">Digite seu endereco</mat-error> -->
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Celular" name="celular" ngModel #celular="ngModel" />
+            <input type="text" matInput placeholder="Celular" name="celular" ngModel #celular="ngModel" />
             <!-- <mat-error *ngIf="celular.invalid">Digite seu numero de celular</mat-error> -->
         </mat-form-field>
         <mat-form-field apperance="fill">
@@ -37,6 +37,7 @@
         </mat-form-field>
         <br>
         <!-- <button mat-raised-button>Registrar dados</button> -->
-        <button mat-raised-button (click)="openDialog()">Registrar dados</button>
-<!--         <button mat-raised-button [routerLink]="['/campanhas, ngForm']">Registrar dados</button> -->
+        <button mat-raised-button (click)="openDialog()" [disabled]="!usuarioForm.valid">Registrar dados</button>
+        
+        <!-- <button mat-raised-button onclick="window.location.href = '/campanhas'">Registrar dados</button> -->
     </form>
