@@ -1,23 +1,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<mat-toolbar>Agendamentos</mat-toolbar>
+<mat-toolbar>Lembretes</mat-toolbar>
 <div class="descricao">
-  <mat-card-subtitle>Veja os seus agendamentos de doação de sangue.</mat-card-subtitle>
+  <mat-card-subtitle>Veja os seus lembretes de doação de sangue.</mat-card-subtitle>
 </div>
 
 <div class="telaCamp">
   <mat-card class="cardcamp" *ngFor="let agendamento of agendamentos ">
-    <!-- <mat-card-header>
-      <mat-card-title>Agendamento</mat-card-title>
-    </mat-card-header> -->
-    <!-- <img mat-card-image src="h  ttps://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg"> -->
-    <mat-card-content>
+    <mat-card-header>
+      <mat-card-title>Lembrete</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="!this.agendamento.isComplete">
+      <p>Campanha: {{agendamento.campSelect}}</p>
       <p>Data: {{agendamento.data}}</p>
       <p>Horario: {{agendamento.horario}}</p>
       <p>Local: {{agendamento.local}}</p>
 
     </mat-card-content>
-    <button mat-raised-button (click)="onDelete(agendamento.id)">Cancelar agendamento</button>
+    <button mat-raised-button (click)="onDelete(agendamento.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
   </mat-card>
 </div>
 
@@ -25,7 +25,7 @@
   <div class="navbar">
     <a href="/agendamentos"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     <a href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
-    <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
+    <a href="/regras"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
   </div>
 </nav>
 <script src="./enter.js"></script>

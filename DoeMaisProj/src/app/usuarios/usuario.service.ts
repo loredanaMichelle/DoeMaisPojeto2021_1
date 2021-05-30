@@ -14,10 +14,6 @@ export class UsuarioService {
 
     }
 
-    /*     getUsuarios(): Usuario[] {
-            return [...this.usuarios];
-        } */
-
     getUsuarios(): void {
         this.httpClient.get<{
             mensagem: string, usuarios: any

@@ -1,0 +1,20 @@
+button{
+    background-color:#610B0B;
+    color: white;
+  }
+  
+  mat-form-field, input{
+    width: 100%;
+    background-color: white;
+  }
+  
+  mat-card-subtitle{
+    font-size: 16px;
+  }
+  
+  .tela{
+    margin: 5%;
+    padding-top: 10rem;
+  }
+  
+  

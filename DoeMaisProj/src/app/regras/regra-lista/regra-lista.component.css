@@ -1,0 +1,69 @@
+.telaCamp{
+    padding-bottom: 50px;
+    margin: 10px;
+}
+
+.cardCamp{
+    width: 100%;
+}
+
+
+.descricao{
+    padding-top: 15px;
+    display:inline-flexbox;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+
+
+mat-card{
+    border-width: 3px;
+    border-color: #851010;
+    border-style:double;
+    margin-bottom: 10px;
+    margin-top: 3px;
+}
+
+mat-card-header{
+    text-align: center;
+    justify-content: center;
+}
+
+
+mat-card-content{
+    margin-left: 10px;
+    margin-bottom: 7px;
+}
+
+
+mat-toolbar{
+    background-color: #851010;
+    color: white;
+    justify-content: center;
+    height: 50%;
+    font-size: 17px;
+}
+
+
+button{
+    margin-top: 5px;
+    background-color:#610B0B;
+    color: white;
+}
+
+.navbar {
+    width: 100%;
+    overflow: auto;
+    background-color: #610B0B;
+  }
+
+.navbar a {
+    float: left;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    height: 15px;
+  }

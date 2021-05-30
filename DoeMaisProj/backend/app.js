@@ -3,9 +3,12 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const jwt = require ('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const Usuario = require('./models/usuario');
 const Campanha = require('./models/campanha');
-const Agendamento = require('./models/agendamento')
+const Agendamento = require('./models/agendamento');
+const UsuarioLog = require('./models/usuarioLog')
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -46,7 +49,7 @@ const campanhas = [
 const agendamentos = [
     {
         id: '1',
-        cpfDoador: '45623566989',
+        campSelect: 'O coração precisa de você',
         data: '14/08/21',
         horario: '10:30',
         local: 'R. Des. Eliseu Guilherme, 147 - Paraíso, São Paulo - SP, 04004-030'
@@ -114,15 +117,19 @@ app.get('/api/campanhas/:tipoSang', (req, res, next) => {
 // post agendamentos de usuarios
 app.post('/api/agendamentos', (req, res, next) => {
     const agendamento = new Agendamento({
-        cpfDoador: req.body.cpfDoador,
+        campSelect: req.body.campSelect,
         data: req.body.data,
         horario: req.body.horario,
         local: req.body.local,
     })
-    agendamento.save();
-    console.log(agendamento);
-    res.status(201).json({ mensagem: 'Agendamento finalizado' })
-})
+    agendamento.save().then((agendamentoInserido) => {
+        console.log(agendamento);
+        res.status(201).json({
+            mensagem: 'Lembrete criado',
+            id: agendamentoInserido._id
+        });
+    });
+});
 //get lista de agendamentos de usuarios
 app.get('/api/agendamentos', (req, res, next) => {
     Agendamento.find().then(documents => {
@@ -133,6 +140,15 @@ app.get('/api/agendamentos', (req, res, next) => {
         });
     })
 });
+//delete agendamento
+app.delete('/api/agendamentos/:id', (req, res, next) => {
+    Agendamento.deleteOne({ _id: req.params.id }).then(resultado => {
+        console.log(resultado);
+        res.status(200).json({
+            mensagem: "Lembrete removido"
+        })
+    })
+})
 //use lista de agendamento de usuarios
 app.use('/api/agendamentos', (req, res, next) => {
     res.status(200).json({
@@ -140,16 +156,59 @@ app.use('/api/agendamentos', (req, res, next) => {
         agendamentos: agendamentos
     })
 });
-//delete agendamento
-app.delete('/api/agendamentos/:id', (req, res, next) => {
-    Agendamento.deleteOne({_id: req.params.id}).then(resultado => {
-        if (resultado.n > 0){
-            res.status(200).json({mensagem: "Cliente removido"});
-          } else {
-            res.status(401).json({mensagem: "Remoção não permitida"});
-          }
+//login usuario
+app.post('/api/usuarioLog/login', (req, res, next) => {
+    let user;
+    UsuarioLog.findOne({ email: req.body.email }).then(u => {
+        user = u;
+        if (!u) {
+            return res.status(401).json({
+                mensagem: "email inválido"
+            })
+        }
+        return bcrypt.compare(req.body.password, u.password);
     })
-  })
-
+        .then(result => {
+            if (!result) {
+                return res.status(401).json({
+                    mensagem: "senha inválida"
+                })
+            }
+            const token = jwt.sign(
+                {email: user.email, id: user._id},
+                'minhasenha',
+                {expiresIn: '1h'}
+                )
+                res.status(200).json({token: token})
+        })
+        .catch(err => {
+            return res.status(401).json({
+                mensagem: "Login falhou: " + err
+            })
+        })
+})
+//cadastrar usuario
+app.post('/api/usuarioLog/signup', (req, res, next) => {
+    bcrypt.hash(req.body.password, 10)
+        .then(hash => {
+            const usuarioLog = new UsuarioLog({
+                email: req.body.email,
+                password: hash
+            })
+            usuarioLog.save()
+                .then((result) => {
+                    res.status(201).json({
+                        mensagem: "ok",
+                        resultado: result
+                    })
+                })
+        })
+        .catch((erro) => {
+            console.log(erro);
+            res.status(500).json({
+                mensagem: "Tente novamente mais tarde"
+            })
+        })
+});
 
 module.exports = app;

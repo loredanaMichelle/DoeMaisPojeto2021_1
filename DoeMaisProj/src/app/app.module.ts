@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http'
 
@@ -32,8 +32,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { CampanhaListaComponent } from './campanhas/campanha-lista/campanha-lista.component';
 import { CampanhaService } from './campanhas/campanha.service';
-import { AgendamentoListaComponent } from './Agendamentos/agendamento-lista/agendamento-lista.component';
-import { AgendamentoService } from './Agendamentos/agendamento.service'
+import { AgendamentoListaComponent } from './agendamentos/agendamento-lista/agendamento-lista.component';
+import { AgendamentoService } from './agendamentos/agendamento.service';
+import { RegraListaComponent } from './regras/regra-lista/regra-lista.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +45,15 @@ import { AgendamentoService } from './Agendamentos/agendamento.service'
     CabecalhoComponent,
     DialogExampleComponent,
     CampanhaListaComponent,
-    AgendamentoListaComponent
+    AgendamentoListaComponent,
+    RegraListaComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     NoopAnimationsModule,
     MatInputModule,
     MatCardModule,

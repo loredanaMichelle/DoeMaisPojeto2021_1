@@ -18,7 +18,7 @@ export class AgendamentoService {
         return dados.agendamentos.map(agendamento => {
             return {
             id: agendamento._id,
-            cpfDoador: agendamento.cpfDoador,
+            campSelect: agendamento.campSelect,
             data: agendamento.data,
             horario: agendamento.horario,
             local: agendamento.local
@@ -43,14 +43,9 @@ export class AgendamentoService {
         return cli.id !== id
       });
       this.listaAgendamentosAtualizada.next([...this.agendamentos]);
-    })
-  }
-
-  getAgendamento (idAgendamento: any){
-    return{
-      ...this.agendamentos.find((cli) => cli.id === idAgendamento)
+      })
     }
-  }
+
  
 }
 

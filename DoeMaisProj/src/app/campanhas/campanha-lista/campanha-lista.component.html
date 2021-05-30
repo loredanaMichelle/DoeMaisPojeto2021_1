@@ -1,23 +1,15 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <mat-toolbar>Campanhas</mat-toolbar>
-<!-- <mat-form-field>
-  <input (keyup)= "applyFilter($event.target.value)" matInput placeholder="Filter">
-</mat-form-field> -->
 <div class="descricao">
   <mat-card-subtitle>Veja as campanhas ativas em São Paulo - SP</mat-card-subtitle>
 </div>
-<!-- <div class="instrucao">
-  <p>1° Escolha seu Tipo sanguíneo.</p>
-  <p>2° Aperte a tecla ENTER.</p>
-  <p>3° Após fazer seu procedimento, aperte o LIMPAR, em caso de nova pesquisa.</p>
-</div> -->
 <div class="filtro">
   <mat-form-field>
 
     <mat-label>Filtro</mat-label>
     <input class="filtroInp" (keyup)="applyFilter($event.target.value)" matInput type="text" placeholder="Selecione um tipo sanguineo"
-      matInput [matAutocomplete]="auto">
+      matInput [matAutocomplete]="auto" >
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of options" [value]="option">
         {{option}}
@@ -35,7 +27,6 @@
         <p>De {{campanha.dataIni}} até {{campanha.dataFim}}</p>
       </mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image src="h  ttps://www.gov.br/pt-br/noticias/saude-e-vigilancia-sanitaria/2020/06/ministerio-da-saude-lanca-nova-campanha-de-doacao-de-sangue-2020/doacao.jpg/@@images/aebacd62-1e6d-463e-88f3-296a739607c6.jpeg"> -->
     <mat-card-content>
       <p>Tipo de sangue requerido: {{campanha.tipoSang}} </p>
       <p>Local: {{campanha.local}}</p>
@@ -44,14 +35,15 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Agendar doação
+            Criar lembrete de doação
           </mat-panel-title>
         </mat-expansion-panel-header>
     
         <form class="tela" (submit)="onAgendamento(agendamentoForm)" #agendamentoForm="ngForm">
           <mat-form-field>
-              <input required type="number" matInput placeholder="Digite seu CPF" name="cpfDoador" ngModel #cpfDoador="ngModel" />
-              <mat-error *ngIf="cpfDoador.invalid">Digite um CPF válido</mat-error>
+              <mat-select value="" matInput placeholder="Selecione a campanha" name="campSelect" ngModel #campSelect="ngModel">
+                <mat-option value={{campanha.titulo}}>{{campanha.titulo}}</mat-option>
+               </mat-select>
           </mat-form-field>
           <mat-form-field>
               <input type="text" required matInput placeholder="Digite uma data dentro do prazo" name="data" ngModel #data="ngModel" />
@@ -62,24 +54,15 @@
               <mat-error *ngIf="horario.invalid">Digite um horario válido</mat-error>
           </mat-form-field>
           <mat-form-field>
-              <!-- <input required type="text" matInput placeholder="Escolha um local" name="local" ngModel #local="ngModel" /> -->
-             <!--  <mat-error *ngIf="local.invalid">DSelecione o Local</mat-error> -->
              <mat-select value="" matInput placeholder="Selecione o local" name="local" ngModel #local="ngModel">
               <mat-option value={{campanha.local}}>{{campanha.local}}</mat-option>
              </mat-select>
           </mat-form-field>
           <br>
-          <!-- <button mat-raised-button>Registrar dados</button> -->
-          <button mat-raised-button >Agendar</button>
-      <!--         <button mat-raised-button [routerLink]="['/campanhas, ngForm']">Registrar dados</button> -->
+          <button mat-raised-button >Criar</button>
       </form>
-    
       </mat-expansion-panel>
-    
     </mat-card-content>
-    <!-- <mat-card-actions>
-      <button mat-button routerLink="/agendamentos">realizar agendamento</button>
-    </mat-card-actions> -->
   </mat-card>
 </div>
 
@@ -91,7 +74,7 @@
   <div class="navbar">
     <a href="/agendamentos"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     <a href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
-    <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
+    <a href="/regras"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
   </div>
 </nav>
 <script src="./enter.js"></script>

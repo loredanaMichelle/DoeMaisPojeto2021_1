@@ -53,12 +53,6 @@ export class CampanhaService {
       this.listaCampanhasAtualizada.next([...this.campanhas]);
     })
 }
-//teste get campanhas
-  //getCampanhas(): void {
-    //  let resp = this.httpClient.get('http://localhost:3000/api/campanhas')
-      //resp.subscribe((data)=>this.campanhas=data);
-  //}
-
 //agendamento
 getAgendamentos(): void {
   this.httpClient.get<{
@@ -68,7 +62,7 @@ getAgendamentos(): void {
           return dados.agendamentos.map(agendamento => {
               return {
               id: agendamento._id,
-              cpfDoador: agendamento.cpfDoador,
+              campSelect: agendamento.campSelect,
               data: agendamento.data,
               horario: agendamento.horario,
               local: agendamento.local
@@ -87,23 +81,24 @@ getAgendamentoAtualizadoObservable() {
   return this.agendamentoAtualizado.asObservable();
 }
 
-adicionarAgendamento(id:string, cpfDoador: string, data: string, horario: string, local: string) {
+adicionarAgendamento(id: string, campSelect: string, data: string, horario: string, local: string) {
   const agendamento: Agendamento = {
       id: id,
-      cpfDoador: cpfDoador,
+      campSelect: campSelect,
       data: data,
       horario: horario,
       local: local
   };
-  this.httpClient.post<{ mensagem: string }>('http://localhost:3000/api/agendamentos',
+  this.httpClient.post<{mensagem: string, id: string}>('http://localhost:3000/api/agendamentos',
       agendamento).subscribe(
-          (dados) => {
-              console.log(dados.mensagem);
-              this.agendamentos.push(agendamento);
-              this.agendamentoAtualizado.next([...this.agendamentos]);
-          }
+        (dados) => {
+          console.log(dados.mensagem);
+          agendamento.id = dados.id;
+          this.agendamentos.push(agendamento);
+          this.agendamentoAtualizado.next([...this.agendamentos]);
+        }
       )
-}
+  }
  
 }
 

@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose');
 
 const agendamentoSchema = mongoose.Schema ({
-cpfDoador: {type: String},
+campSelect: {type: String},
 data: {type: String},
 horario: {type: String},
 local: {type: String},

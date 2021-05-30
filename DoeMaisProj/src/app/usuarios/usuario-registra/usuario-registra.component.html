@@ -14,14 +14,11 @@
         </mat-form-field>
         <mat-form-field>
             <input type="text" matInput placeholder="Endereço" name="endereco" ngModel #endereco="ngModel" />
-            <!-- <mat-error *ngIf="endereco.invalid">Digite seu endereco</mat-error> -->
         </mat-form-field>
         <mat-form-field>
             <input type="text" matInput placeholder="Celular" name="celular" ngModel #celular="ngModel" />
-            <!-- <mat-error *ngIf="celular.invalid">Digite seu numero de celular</mat-error> -->
         </mat-form-field>
         <mat-form-field apperance="fill">
-            <!--             <input matInput placeholder="Tipo Sanguíneo" name="tipoSanguineo" ngModel #tipoSanguineo="ngModel" /> -->
             <mat-select value="" matInput placeholder="Tipo Sanguíneo" name="tipoSanguineo" ngModel
                 #tipoSanguineo="ngModel">
                 <mat-option value=A+>A+</mat-option>
@@ -33,11 +30,7 @@
                 <mat-option value=O+>O+</mat-option>
                 <mat-option value=O->O-</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="tipoSanguineo.invalid">Digite um tipo sanguíneo válido</mat-error> -->
         </mat-form-field>
         <br>
-        <!-- <button mat-raised-button>Registrar dados</button> -->
         <button mat-raised-button (click)="openDialog()" [disabled]="!usuarioForm.valid">Registrar dados</button>
-        
-        <!-- <button mat-raised-button onclick="window.location.href = '/campanhas'">Registrar dados</button> -->
     </form>

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../usuario.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from 'src/app/dialog-example/dialog-example.component';
-/* import { Usuario } from '../usuario.model'; */
 
 @Component({
   selector: 'app-usuario-registra',
@@ -37,10 +36,3 @@ export class UsuarioRegistraComponent {
 
 
 }
-
-/* export class {
-constructor(public dialog: MatDialog) { }
-  openDialog() {
-    this.dialog.open(DialogExampleComponent);
-  }
-} */
