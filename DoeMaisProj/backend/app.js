@@ -8,7 +8,8 @@ const bcrypt = require('bcrypt');
 const Usuario = require('./models/usuario');
 const Campanha = require('./models/campanha');
 const Agendamento = require('./models/agendamento');
-const UsuarioLog = require('./models/usuarioLog')
+const UsuarioLog = require('./models/usuarioLog');
+//const checkAuth = require ('./middleware/check-auth');
 
 app.use(cors());
 app.use(bodyParser.json());
