@@ -32,13 +32,13 @@ export class CampanhaListaComponent implements OnInit{
     this.campanhaService.getTipoSang(tipoSang);
   }
 
-  //agendamento
-  onAgendamento(form: NgForm) {
+  //lembrete
+  onLembrete(form: NgForm) {
     if (form.invalid) {
       return;
     }
 
-    this.campanhaService.adicionarAgendamento(
+    this.campanhaService.adicionarLembrete(
       form.value.id,
       form.value.campSelect,
       form.value.data,

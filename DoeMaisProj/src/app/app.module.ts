@@ -32,11 +32,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { CampanhaListaComponent } from './campanhas/campanha-lista/campanha-lista.component';
 import { CampanhaService } from './campanhas/campanha.service';
-import { AgendamentoListaComponent } from './agendamentos/agendamento-lista/agendamento-lista.component';
-import { AgendamentoService } from './agendamentos/agendamento.service';
 import { RegraListaComponent } from './regras/regra-lista/regra-lista.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { LembreteListaComponent } from './lembretes/lembrete-lista/lembrete-lista.component';
+import { LembreteService } from './lembretes/lembrete.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     CabecalhoComponent,
     DialogExampleComponent,
     CampanhaListaComponent,
-    AgendamentoListaComponent,
+    LembreteListaComponent,
     RegraListaComponent,
     LoginComponent,
     SignupComponent
@@ -72,7 +72,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     MatNativeDateModule,
     MomentDateModule
   ],
-  providers: [UsuarioService, CampanhaService, AgendamentoService], 
+  providers: [UsuarioService, CampanhaService, LembreteService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -39,7 +39,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
     
-        <form class="tela" (submit)="onAgendamento(agendamentoForm)" #agendamentoForm="ngForm">
+        <form class="tela" (submit)="onLembrete(lembreteForm)" #lembreteForm="ngForm">
           <mat-form-field>
               <mat-select value="" matInput placeholder="Selecione a campanha" name="campSelect" ngModel #campSelect="ngModel">
                 <mat-option value={{campanha.titulo}}>{{campanha.titulo}}</mat-option>
@@ -72,7 +72,7 @@
 
 <nav class="navbar fixed-bottom">
   <div class="navbar">
-    <a href="/agendamentos"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    <a href="/lembretes"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     <a href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
     <a href="/regras"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
     <a href="/login" ><i class="fa fa-sign-out" aria-hidden="true"></i></a>

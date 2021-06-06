@@ -10,8 +10,8 @@ export interface Campanha {
 
 }
 
-//agendamento
-export interface Agendamento{
+//lembrete
+export interface Lembrete{
     id: string;
     campSelect: string;
     data: string;

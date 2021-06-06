@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Campanha } from './campanha.model';
-import { Agendamento } from './campanha.model';
+import { Lembrete } from './campanha.model';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -10,8 +10,8 @@ export class CampanhaService {
   private campanhas: Campanha[] = [];
   private listaCampanhasAtualizada = new Subject<Campanha[]>();
   
-  private agendamentos: Agendamento[] = [];
-  private agendamentoAtualizado = new Subject<Agendamento[]>();
+  private lembretes: Lembrete[] = [];
+  private lembreteAtualizado = new Subject<Lembrete[]>();
 
   constructor(private httpClient: HttpClient){
   }
@@ -53,49 +53,49 @@ export class CampanhaService {
       this.listaCampanhasAtualizada.next([...this.campanhas]);
     })
 }
-//agendamento
-getAgendamentos(): void {
+//lembrete
+getLembretes(): void {
   this.httpClient.get<{
-      mensagem: string, agendamentos: any
-  }>('http://localhost:3000/api/agendamentos')
+      mensagem: string, lembretes: any
+  }>('http://localhost:3000/api/lembretes')
       .pipe(map((dados) => {
-          return dados.agendamentos.map(agendamento => {
+          return dados.lembretes.map(lembrete => {
               return {
-              id: agendamento._id,
-              campSelect: agendamento.campSelect,
-              data: agendamento.data,
-              horario: agendamento.horario,
-              local: agendamento.local
+              id: lembrete._id,
+              campSelect: lembrete.campSelect,
+              data: lembrete.data,
+              horario: lembrete.horario,
+              local: lembrete.local
               }
               })
       }))
       .subscribe(
-          (agendamentos) => {
-              this.agendamentos = agendamentos;
-              this.agendamentoAtualizado.next([...this.agendamentos]);
+          (lembretes) => {
+              this.lembretes = lembretes;
+              this.lembreteAtualizado.next([...this.lembretes]);
           }
       )
 }
 
-getAgendamentoAtualizadoObservable() {
-  return this.agendamentoAtualizado.asObservable();
+getLembreteAtualizadoObservable() {
+  return this.lembreteAtualizado.asObservable();
 }
 
-adicionarAgendamento(id: string, campSelect: string, data: string, horario: string, local: string) {
-  const agendamento: Agendamento = {
+adicionarLembrete(id: string, campSelect: string, data: string, horario: string, local: string) {
+  const lembrete: Lembrete = {
       id: id,
       campSelect: campSelect,
       data: data,
       horario: horario,
       local: local
   };
-  this.httpClient.post<{mensagem: string, id: string}>('http://localhost:3000/api/agendamentos',
-      agendamento).subscribe(
+  this.httpClient.post<{mensagem: string, id: string}>('http://localhost:3000/api/lembretes',
+      lembrete).subscribe(
         (dados) => {
           console.log(dados.mensagem);
-          agendamento.id = dados.id;
-          this.agendamentos.push(agendamento);
-          this.agendamentoAtualizado.next([...this.agendamentos]);
+          lembrete.id = dados.id;
+          this.lembretes.push(lembrete);
+          this.lembreteAtualizado.next([...this.lembretes]);
         }
       )
   }

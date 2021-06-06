@@ -7,7 +7,7 @@ const jwt = require ('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Usuario = require('./models/usuario');
 const Campanha = require('./models/campanha');
-const Agendamento = require('./models/agendamento');
+const Lembrete = require('./models/lembrete');
 const UsuarioLog = require('./models/usuarioLog');
 //const checkAuth = require ('./middleware/check-auth');
 
@@ -47,7 +47,7 @@ const campanhas = [
     }
 ]
 
-const agendamentos = [
+const lembretes = [
     {
         id: '1',
         campSelect: 'O coração precisa de você',
@@ -115,46 +115,46 @@ app.get('/api/campanhas/:tipoSang', (req, res, next) => {
     })
 });
 
-// post agendamentos de usuarios
-app.post('/api/agendamentos', (req, res, next) => {
-    const agendamento = new Agendamento({
+// post lembretes de usuarios
+app.post('/api/lembretes', (req, res, next) => {
+    const lembrete = new Lembrete({
         campSelect: req.body.campSelect,
         data: req.body.data,
         horario: req.body.horario,
         local: req.body.local,
     })
-    agendamento.save().then((agendamentoInserido) => {
-        console.log(agendamento);
+    lembrete.save().then((lembreteInserido) => {
+        console.log(lembrete);
         res.status(201).json({
             mensagem: 'Lembrete criado',
-            id: agendamentoInserido._id
+            id: lembreteInserido._id
         });
     });
 });
-//get lista de agendamentos de usuarios
-app.get('/api/agendamentos', (req, res, next) => {
-    Agendamento.find().then(documents => {
+//get lista de lembretes de usuarios
+app.get('/api/lembretes', (req, res, next) => {
+    Lembrete.find().then(documents => {
         console.log(documents)
         res.status(200).json({
             mensagem: "Tudo OK",
-            agendamentos: documents
+            lembretes: documents
         });
     })
 });
-//delete agendamento
-app.delete('/api/agendamentos/:id', (req, res, next) => {
-    Agendamento.deleteOne({ _id: req.params.id }).then(resultado => {
+//delete lembrete
+app.delete('/api/lembretes/:id', (req, res, next) => {
+    Lembrete.deleteOne({ _id: req.params.id }).then(resultado => {
         console.log(resultado);
         res.status(200).json({
             mensagem: "Lembrete removido"
         })
     })
 })
-//use lista de agendamento de usuarios
-app.use('/api/agendamentos', (req, res, next) => {
+//use lista de lembrete de usuarios
+app.use('/api/lembretes', (req, res, next) => {
     res.status(200).json({
         mensagem: "tudo OK",
-        agendamentos: agendamentos
+        lembretes: lembretes
     })
 });
 //login usuario
@@ -211,5 +211,7 @@ app.post('/api/usuarioLog/signup', (req, res, next) => {
             })
         })
 });
+
+
 
 module.exports = app;

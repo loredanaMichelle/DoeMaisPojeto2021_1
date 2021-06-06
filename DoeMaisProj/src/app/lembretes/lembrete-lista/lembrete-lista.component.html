@@ -6,24 +6,24 @@
 </div>
 
 <div class="telaCamp">
-  <mat-card class="cardcamp" *ngFor="let agendamento of agendamentos ">
+  <mat-card class="cardcamp" *ngFor="let lembrete of lembretes ">
     <mat-card-header>
       <mat-card-title>Lembrete</mat-card-title>
     </mat-card-header>
-    <mat-card-content *ngIf="!this.agendamento.isComplete">
-      <p>Campanha: {{agendamento.campSelect}}</p>
-      <p>Data: {{agendamento.data}}</p>
-      <p>Horario: {{agendamento.horario}}</p>
-      <p>Local: {{agendamento.local}}</p>
+    <mat-card-content *ngIf="!this.lembrete.isComplete">
+      <p>Campanha: {{lembrete.campSelect}}</p>
+      <p>Data: {{lembrete.data}}</p>
+      <p>Horario: {{lembrete.horario}}</p>
+      <p>Local: {{lembrete.local}}</p>
 
     </mat-card-content>
-    <button mat-raised-button (click)="onDelete(agendamento.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    <button mat-raised-button (click)="onDelete(lembrete.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
   </mat-card>
 </div>
 
 <nav class="navbar fixed-bottom">
   <div class="navbar">
-    <a href="/agendamentos"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    <a href="/lembretes"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     <a href="/campanhas"><i class="fa fa-fw fa-home"></i></a>
     <a href="/regras"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
   </div>
